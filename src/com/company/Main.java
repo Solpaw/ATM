@@ -15,14 +15,11 @@ public class Main {
             list.add(sc.next());
         }
         for(int i=0;i<list.size();i+=3) {
-            for(int j=0;j<3;j++){
-                String accountNumber = list.get(i);
-                String pinNumber = list.get(i+1);
-                int balance = Integer.parseInt(list.get(i+2));
-                BankAccount acc = new BankAccount(accountNumber,pinNumber,balance);
-                set.add(acc);
-            }
-
+            String accountNumber = list.get(i);
+            String pinNumber = list.get(i+1);
+            int balance = Integer.parseInt(list.get(i+2));
+            BankAccount acc = new BankAccount(accountNumber,pinNumber,balance);
+            set.add(acc);
         }
         BankAccount current = null;
         while(true) {
