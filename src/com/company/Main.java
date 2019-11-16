@@ -1,12 +1,24 @@
 package com.company;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.*;
 
 public class Main {
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void saveBalance(Set<BankAccount> set) throws IOException {
+        FileWriter fileWriter = new FileWriter("data.txt");
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+        for(BankAccount a:set){
+            printWriter.print("\n");
+            printWriter.print(a.getAccountNumber());
+            printWriter.print(" ");
+            printWriter.print(a.getPinNumber());
+            printWriter.print(" ");
+            printWriter.print(String.valueOf(a.getBalance()));
+        }
+        printWriter.close();
+    }
+    public static void main(String[] args) throws IOException {
         Set<BankAccount> set = new HashSet<>();
         File file = new File(".//data.txt");
         Scanner sc = new Scanner(file);
@@ -17,7 +29,7 @@ public class Main {
         for(int i=0;i<list.size();i+=3) {
             String accountNumber = list.get(i);
             String pinNumber = list.get(i+1);
-            int balance = Integer.parseInt(list.get(i+2));
+            float balance = Float.parseFloat(list.get(i+2));
             BankAccount acc = new BankAccount(accountNumber,pinNumber,balance);
             set.add(acc);
         }
@@ -62,6 +74,7 @@ public class Main {
                         amount = input.nextInt();
                     }
                     current.makeDeposit(amount);
+                    saveBalance(set);
                     break;
                 case 2:
                     System.out.println("Input the amount: ");

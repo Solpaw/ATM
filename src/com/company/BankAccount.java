@@ -7,7 +7,7 @@ public class BankAccount {
     private String pinNumber;
     private float balance;
 
-    public BankAccount(String num, String pin, int balance) {
+    public BankAccount(String num, String pin, float balance) {
         this.accountNumber = num;
         this.pinNumber = pin;
         this.balance = balance;
