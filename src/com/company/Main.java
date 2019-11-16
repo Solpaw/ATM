@@ -88,6 +88,7 @@ public class Main {
                         amount = input.nextInt();
                     }
                     current.withdrawFunds(amount);
+                    saveBalance(set);
                     break;
                 case 3:
                     System.out.println("Current balance: "+current.getBalance());
